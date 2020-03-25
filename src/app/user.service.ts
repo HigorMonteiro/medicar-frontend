@@ -65,11 +65,39 @@ export class UserService {
     });
   }
 
+  public getSchedules(): Observable<any> {
+    this.actionToken();
+    return this.httpClient.get(this.BASE_URL + "schedules/", {
+      headers: this.headersToken
+    });
+  }
+
+  public getSpecialties(): Observable<any> {
+    this.actionToken();
+    return this.httpClient.get(this.BASE_URL + "specialties/", {
+      headers: this.headersToken
+    });
+  }
+
+  public getDoctors(): Observable<any> {
+    this.actionToken();
+    return this.httpClient.get(this.BASE_URL + "doctors/", {
+      headers: this.headersToken
+    });
+  }
+
+  public makeConsultation(objJSON): Observable<any> {
+    this.actionToken();
+    return this.httpClient.post(this.BASE_URL + "consultations/", objJSON, {
+      headers: this.headersToken
+    });
+  }
+
   public deselectConsultation(id): Observable<any> {
     this.actionToken();
     return this.httpClient.delete(this.BASE_URL + "consultation/" + id, {
       headers: this.headersToken
     });
   }
-
+  
 }

@@ -3,7 +3,7 @@
   class="alert alert-success alert-dismissible fade show"
   role="alert"
 >
-  <strong>SUCESSO!</strong> Horário agendado.
+   Horário foi agendado.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -14,7 +14,7 @@
   class="alert alert-success alert-dismissible fade show"
   role="alert"
 >
-  <strong>SUCESSO!</strong> Horário desmarcado.
+   Horário foi desmarcado.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -87,4 +87,99 @@
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h4 class="modal-title">Nova Consulta</h4>
+      </div>
+      <form [formGroup]="formSchedule">
+        <div class="form-group col-md-12">
+          <select
+            id="inputSpecialty"
+            class="form-control"
+            formControlName="specialty"
+            (change)="getDoctors()"
+          >
+            <option value="" selected disabled>Especialidade</option>
+            <option
+              *ngFor="let specialty of specialties"
+              value="{{ specialty.id }}"
+              >{{ specialty.name }}</option
+            >
+          </select>
+        </div>
+
+        <div class="form-group col-md-12">
+          <select
+            class="form-control"
+            formControlName="doctor"
+            (change)="getDate()"
+          >
+            <option value="" selected disabled>Médico</option>
+            <option
+              *ngFor="let doctor of selectedDoctors"
+              value="{{ doctor.id }}"
+              >{{ doctor.name }}</option
+            >
+          </select>
+        </div>
+
+        <div class="form-group col-md-12">
+          <select
+            class="form-control"
+            formControlName="day"
+            (change)="getHours()"
+          >
+            <option value="" selected disabled>Data</option>
+            <option
+              *ngFor="let freeDay of FreeDays"
+              value="{{ freeDay }}"
+              >{{ freeDay | date: "dd/MM/yyyy" }}</option
+            >
+          </select>
+        </div>
+
+        <div class="form-group col-md-12">
+          <select class="form-control" formControlName="hour">
+            <option value="" selected disabled>Hora</option>
+            <option *ngFor="let hour of FreeHours" value="{{ hour }}">{{
+              hour
+            }}</option>
+          </select>
+        </div>
+      </form>
+      <!-- Modal footer -->
+      <div
+        class="row"
+        style="    width: 100%;
+        margin-left: 0; margin-bottom: 20px;
+    margin-top: 20px;"
+      >
+        <div class="col-6">
+          <button
+            type="button"
+            class="btn btn-md btn-block btn-link btn-modal-close"
+            data-dismiss="modal"
+          >
+            Cancelar
+          </button>
+        </div>
+        <div class="col-6">
+          <button
+            type="button"
+            class="btn btn-md btn-block btn-primary"
+            data-dismiss="modal"
+            (click)="preConsultation()"
+          >
+            Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
