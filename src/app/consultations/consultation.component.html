@@ -75,9 +75,16 @@
         <td>{{ consultation.day | date: "dd/MM/yyyy" }}</td>
         <th style="font-weight: normal;">{{ consultation.hour }}</th>
         <td>
+          <button
+            class="btn btn-sm btn-link btn-desm btn-desmarcar"
+            type="button"
+            (click)="deselectConsultation(consultation.id)"
+          >
+            <i class="fa fa-remove btn-icon"></i>
+            Desmarcar
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-

@@ -67,4 +67,15 @@ export class ConsultationComponent implements OnInit {
     this.getConsultations();
   }
   
+  deselectConsultation(consultationID) {
+    this.userService.deselectConsultation(consultationID).subscribe(data => {
+      try {
+        console.log("sucesso");
+        this.getConsultations();
+        this.msgFormDeleteSuccess = true;
+      } catch (err) {
+        console.log("erro");
+      }
+    });
+  }
 }

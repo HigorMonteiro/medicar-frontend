@@ -65,5 +65,11 @@ export class UserService {
     });
   }
 
+  public deselectConsultation(id): Observable<any> {
+    this.actionToken();
+    return this.httpClient.delete(this.BASE_URL + "consultation/" + id, {
+      headers: this.headersToken
+    });
+  }
 
 }
