@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
           name: this.retorno.name,
           token: this.retorno.token
         });
+        localStorage.setItem("user", user);
         this.router.navigate(["consultations"]);
       } else {
         this.msgFormError = this.retorno.msg;
