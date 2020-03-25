@@ -49,4 +49,14 @@ export class UserService {
     );
   }
 
+  public RegisterRequest(objJSON): Observable<any> {
+    console.log(objJSON);
+
+    return this.httpClient.post(
+      this.BASE_URL + "auth/register/",
+      objJSON,
+      this.headers
+    );
+  }
+
 }
