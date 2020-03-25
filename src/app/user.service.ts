@@ -58,5 +58,12 @@ export class UserService {
       this.headers
     );
   }
+  public getConsultations(): Observable<any> {
+    this.actionToken();
+    return this.httpClient.get(this.BASE_URL + "consultations/", {
+      headers: this.headersToken
+    });
+  }
+
 
 }
